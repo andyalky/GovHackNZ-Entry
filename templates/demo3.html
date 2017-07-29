@@ -1,0 +1,109 @@
+{% include "__header__.html" %}
+<div class="container">
+  <div class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills pull-right">
+        <li role="presentation"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/team">Team</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/demo1">Block-Level Demo</a></li>
+            <li><a href="/demo2">Lot-Level Demo</a></li>
+            <li><a href="/demo3">Whanganui Demo</a></li>
+          </ul>
+      </li>
+      </ul>
+    </nav>
+    <h3 class="text-muted">gentrification.tech</h3>
+  </div>
+
+  <div class="row marketing">
+    <div style="width: 640px; height: 480px" id="mapContainer"></div>
+    <script>
+    // Template function for our controls
+    function renderControls(buttons) {
+      var containerNode = document.createElement('div');
+      containerNode.setAttribute('style', 'position:absolute;top:0;left:0;background-color:#fff; padding:10px;');
+      containerNode.className = "btn-group";
+
+      Object.keys(buttons).forEach(function (label) {
+        var input = document.createElement('input');
+        input.value = label;
+        input.type = 'button';
+        input.onclick = buttons[label];
+        input.className="btn btn-sm btn-default"
+        containerNode.appendChild(input);
+      });
+
+      map.getElement().appendChild(containerNode);
+    }
+
+    function showKMLBallon(position, data) {
+      var content = data.balloonStyle.text;
+      if (content) {
+        // Styling of the balloon text.
+        // The only supported wilde cards are $[text] and $[description].
+        content = content
+          .replace('$[name]', data.name || '')
+          .replace('$[description]', data.description || '');
+
+        // Note how we are caching our infoBubble instance
+        // We create InfoBubble object only once and then reuse it
+        var bubble = showKMLBallon.infoBubble;
+        if (!bubble) {
+          bubble = new H.ui.InfoBubble(position, {content: content});
+          ui.addBubble(bubble);
+          bubble.getContentElement().style.marginRight = "-24px";
+          // Cache our instance for future use
+          showKMLBallon.infoBubble = bubble;
+        } else {
+          bubble.setPosition(position);
+          bubble.setContent(content);
+          bubble.open();
+        }
+      }
+    }
+
+      // Initialize the platform object:
+      var platform = new H.service.Platform({
+      app_id: 'E3oKHLKOsST0WoNHN9Ax',
+      app_code: 'aTKYZAxiyA5Oniwb58ueeQ',
+      useHTTPS: true,
+      useCIT: true
+      });
+
+      // Obtain the default map types from the platform object
+      var maptypes = platform.createDefaultLayers();
+
+      // Instantiate (and display) a map object:
+      var map = new H.Map(
+      document.getElementById('mapContainer'),
+      maptypes.normal.map,
+      {
+        zoom: 19,
+        center: { lat: -41.294400, lng: 174.775300 }
+      });
+
+
+    //Create reader object initializing it with a document:
+    var reader = new H.data.kml.Reader('/static/test.kml')
+
+    // Parse the document:
+    reader.parse();
+
+    // Get KML layer from the reader object and add it to the map:
+    layer = reader.getLayer();
+    map.addLayer(layer);
+
+    // KML objects receive regular map events, so add an event listener to the
+    // KML layer:
+    layer.getProvider().addEventListener('tap', function(ev) {
+      // Log map object data. They contain name, description (if present in
+      // KML) and the KML node itself.
+      console.log(ev.target.getData());
+    });
+
+    </script>
+  </div>
+{% include "__footer__.html" %}
