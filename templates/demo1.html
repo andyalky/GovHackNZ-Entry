@@ -87,7 +87,7 @@
 
 
     //Create reader object initializing it with a document:
-    var reader = new H.data.kml.Reader('/static/test.kml')
+    var reader = new H.data.kml.Reader('/static/LotData.kml')
 
     // Parse the document:
     reader.parse();
@@ -103,7 +103,10 @@
       // KML) and the KML node itself.
       console.log(ev.target.getData());
     });
+    var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
+    // Create the default UI components
+    var ui = H.ui.UI.createDefault(map, maptypes);
     </script>
   </div>
 {% include "__footer__.html" %}

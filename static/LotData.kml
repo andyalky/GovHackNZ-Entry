@@ -41,44 +41,6 @@
         <styleUrl>#poly-097138-1200-77-nodesc-highlight</styleUrl>
       </Pair>
     </StyleMap>
-    <Style id="poly-880E4F-1200-77-nodesc-normal">
-      <LineStyle>
-        <color>ff4f0e88</color>
-        <width>1.2</width>
-      </LineStyle>
-      <PolyStyle>
-        <color>4d4f0e88</color>
-        <fill>1</fill>
-        <outline>1</outline>
-      </PolyStyle>
-      <BalloonStyle>
-        <text><![CDATA[<h3>$[name]</h3>]]></text>
-      </BalloonStyle>
-    </Style>
-    <Style id="poly-880E4F-1200-77-nodesc-highlight">
-      <LineStyle>
-        <color>ff4f0e88</color>
-        <width>1.8</width>
-      </LineStyle>
-      <PolyStyle>
-        <color>4d4f0e88</color>
-        <fill>1</fill>
-        <outline>1</outline>
-      </PolyStyle>
-      <BalloonStyle>
-        <text><![CDATA[<h3>$[name]</h3>]]></text>
-      </BalloonStyle>
-    </Style>
-    <StyleMap id="poly-880E4F-1200-77-nodesc">
-      <Pair>
-        <key>normal</key>
-        <styleUrl>#poly-880E4F-1200-77-nodesc-normal</styleUrl>
-      </Pair>
-      <Pair>
-        <key>highlight</key>
-        <styleUrl>#poly-880E4F-1200-77-nodesc-highlight</styleUrl>
-      </Pair>
-    </StyleMap>
     <Style id="poly-A52714-1200-77-nodesc-normal">
       <LineStyle>
         <color>ff1427a5</color>
@@ -376,7 +338,7 @@
       </Placemark>
       <Placemark>
         <name>171Cuba</name>
-        <styleUrl>#poly-880E4F-1200-77-nodesc</styleUrl>
+        <styleUrl>#poly-A52714-1200-77-nodesc</styleUrl>
         <Polygon>
           <outerBoundaryIs>
             <LinearRing>
