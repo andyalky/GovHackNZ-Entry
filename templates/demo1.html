@@ -8,17 +8,35 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/demo1">Block-Level Demo</a></li>
-            <li><a href="/demo2">Lot-Level Demo</a></li>
-            <li><a href="/demo3">Whanganui Demo</a></li>
+            <li><a href="/demo1">Wellington Block-Level Demo</a></li>
+            <li><a href="/demo2">Wellington Lot-Level Demo</a></li>
+            <li><a href="/demo3">Whanganui Lot-Level Demo</a></li>
           </ul>
       </li>
       </ul>
     </nav>
     <h3 class="text-muted">gentrification.tech</h3>
   </div>
+  <div class="row marketing">
+    <div class="col-md-6">
+  <p>Time period: <input type="range"></input></p>
+</div>
+<div class="col-md-6">
+  Data Points: <select id="example-getting-started" >
+      <option value="cheese">Facebook Sentiment</option>
+      <option value="tomatoes">Facebook Activity</option>
+      <option value="mozarella">Business Activity</option>
+      <option value="mushrooms">Business Churn</option>
+      <option value="pepperoni">Proprietary Gentrifcation Algorithm</option>
+  </select>
+</div>
+  </div>
+
 
   <div class="row marketing">
+
+
+
     <div style="width: 640px; height: 480px" id="mapContainer"></div>
     <script>
     // Template function for our controls
@@ -81,13 +99,13 @@
       document.getElementById('mapContainer'),
       maptypes.normal.map,
       {
-        zoom: 19,
-        center: { lat: -41.294400, lng: 174.775300 }
+        zoom: 16,
+        center: { lat: -41.292500, lng: 174.775300 }
       });
 
 
     //Create reader object initializing it with a document:
-    var reader = new H.data.kml.Reader('/static/LotData.kml')
+    var reader = new H.data.kml.Reader('/static/BlockData.kml')
 
     // Parse the document:
     reader.parse();
@@ -108,5 +126,6 @@
     // Create the default UI components
     var ui = H.ui.UI.createDefault(map, maptypes);
     </script>
+    <!-- Initialize the plugin: -->
   </div>
 {% include "__footer__.html" %}

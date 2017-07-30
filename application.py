@@ -15,11 +15,11 @@ def demo1():
 
 @application.route("/demo2/")
 def demo2():
-    return render_template('demo1.html')
+    return render_template('demo2.html')
 
 @application.route("/demo3/")
 def demo3():
-    return render_template('demo3.html')    
+    return render_template('demo3.html')
 
 if __name__ == '__main__':
     application.run(debug=True)
